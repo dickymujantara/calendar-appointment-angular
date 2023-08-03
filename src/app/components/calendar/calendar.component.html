@@ -1,0 +1,19 @@
+
+<button mat-raised-button class="mx mt" color="primary" (click)="openAppointment()">Add Appointment</button>
+<button class="mx mt" color="primary" mat-raised-button routerLink="/calendar-appointment">View Calendar Appointment</button>
+
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let appointment of appointments" cdkDrag cdkDragBoundary=".calendar">
+    <mat-card>
+        <mat-card-content>
+          <div class="appointment">
+            <h3>{{ appointment.title }}</h3>
+            <p>{{ appointment.description }}</p>
+            <p>Start: {{ appointment.start | date }}</p>
+            <p>End: {{ appointment.end | date }}</p>
+          </div>
+          <button mat-raised-button color="warn" (click)="onDeleteAppointment(appointment.id)">Remove Appointment</button>
+        </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
